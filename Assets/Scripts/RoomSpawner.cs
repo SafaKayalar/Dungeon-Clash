@@ -19,7 +19,7 @@ public class RoomSpawner : MonoBehaviour
     void Start()
     {
         tempelates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTempelates>();
-        Invoke("Spawn", 1f);
+        Invoke("Spawn", 0.1f);
     }
 
     // Update is called once per frame
@@ -82,8 +82,6 @@ public class RoomSpawner : MonoBehaviour
     {
         if(collision.CompareTag("SpawnPoint"))
         {
-            print(openingDirection);
-            print(collision.GetComponent<RoomSpawner>().openingDirection);
             if(collision.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
                 if(openingDirection == 3 && collision.GetComponent<RoomSpawner>().openingDirection == 1)
