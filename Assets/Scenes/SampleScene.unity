@@ -171,6 +171,8 @@ MonoBehaviour:
   - {fileID: 5237185554925045047, guid: 0336d4bca2bae4448abcb84220acef71, type: 3}
   - {fileID: 5576082124234558994, guid: ee16b130624f67744abd9f43d52397e0, type: 3}
   - {fileID: 5007920993996114854, guid: ed74b16c1dd6b3341a918e0fea1a9d95, type: 3}
+  tbcoridor: {fileID: 7416599086547576076, guid: 44139f80d6cb2554a88169f28266ff50, type: 3}
+  rlcoridor: {fileID: 1290024810055389533, guid: eca15865fc20bbb4bb20a30de1b11dd2, type: 3}
   rb: {fileID: 8149471101828889556, guid: cba0df9da4c7ebe4db1fb503d3403ec3, type: 3}
   rt: {fileID: 5237185554925045047, guid: 0336d4bca2bae4448abcb84220acef71, type: 3}
   lb: {fileID: 6771409665016762489, guid: 0bb74d6291e22d64cb5f794ad1c9765f, type: 3}

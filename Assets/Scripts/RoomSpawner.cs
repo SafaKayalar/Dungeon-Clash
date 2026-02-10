@@ -14,6 +14,7 @@ public class RoomSpawner : MonoBehaviour
     private RoomTempelates tempelates;
     private int rand;
     private bool spawned = false;
+    public string roomtype;
 
     void Start()
     {
@@ -23,35 +24,53 @@ public class RoomSpawner : MonoBehaviour
 
     // Update is called once per frame
     void Spawn()
-    {   
-        if(spawned == false)
-        { 
-            if (openingDirection == 1)
+    {   if (roomtype == "coridor")
+        {
+            if (spawned == false)
             {
-                //Need to spawn Top Door
-                rand = Random.Range(0, tempelates.topRooms.Length);
-                Instantiate(tempelates.topRooms[rand], transform.position, tempelates.topRooms[rand].transform.rotation);
+                if (openingDirection == 1)
+                {
+                    //Need to spawn Top Door
+                    rand = Random.Range(0, tempelates.topRooms.Length);
+                    Instantiate(tempelates.topRooms[rand], transform.position, tempelates.topRooms[rand].transform.rotation);
+                }
+
+                else if (openingDirection == 2)
+                {
+                    //Need to spawn Bottom Door
+                    rand = Random.Range(0, tempelates.bottomRooms.Length);
+                    Instantiate(tempelates.bottomRooms[rand], transform.position, tempelates.bottomRooms[rand].transform.rotation);
+                }
+
+                else if (openingDirection == 3)
+                {
+                    //Need to Right Top Door
+                    rand = Random.Range(0, tempelates.rightRooms.Length);
+                    Instantiate(tempelates.rightRooms[rand], transform.position, tempelates.rightRooms[rand].transform.rotation);
+                }
+
+                else if (openingDirection == 4)
+                {
+                    //Need to spawn Left Door
+                    rand = Random.Range(0, tempelates.leftRooms.Length);
+                    Instantiate(tempelates.leftRooms[rand], transform.position, tempelates.leftRooms[rand].transform.rotation);
+                }
+            }
+        }
+        else if (roomtype == "room")
+        {
+            if (openingDirection == 1 || openingDirection == 2)
+            {
+
+
+                Instantiate(tempelates.rlcoridor, transform.position, tempelates.topRooms[rand].transform.rotation);
             }
 
-            else if(openingDirection == 2)
+            else if (openingDirection == 3 || openingDirection == 4)
             {
-                //Need to spawn Bottom Door
-                rand = Random.Range(0, tempelates.bottomRooms.Length);
-                Instantiate(tempelates.bottomRooms[rand],transform.position, tempelates.bottomRooms[rand].transform.rotation);
-            }
 
-            else if (openingDirection == 3)
-            {
-                //Need to Right Top Door
-                rand = Random.Range(0, tempelates.rightRooms.Length);
-                Instantiate(tempelates.rightRooms[rand], transform.position, tempelates.rightRooms[rand].transform.rotation);
-            }
 
-            else if (openingDirection == 4)
-            {
-                //Need to spawn Left Door
-                rand = Random.Range(0, tempelates.leftRooms.Length);
-                Instantiate(tempelates.leftRooms[rand], transform.position, tempelates.leftRooms[rand].transform.rotation);
+                Instantiate(tempelates.tbcoridor, transform.position, tempelates.bottomRooms[rand].transform.rotation);
             }
         }
 

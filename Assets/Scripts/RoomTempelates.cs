@@ -9,6 +9,8 @@ public class RoomTempelates : MonoBehaviour
     public GameObject[] leftRooms;
     public GameObject[] rightRooms;
 
+    public GameObject tbcoridor;
+    public GameObject rlcoridor;
     public GameObject rb;
     public GameObject rt;
     public GameObject lb;
