@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cfb65a1a7a35e48bdca08d58e3f810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingDirection: 2
+  openingDirection: 1
   roomtype: coridor
 --- !u!1 &6245499230330108117
 GameObject:

@@ -19,7 +19,7 @@ public class RoomSpawner : MonoBehaviour
     void Start()
     {
         tempelates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTempelates>();
-        Invoke("Spawn", 0.1f);
+        Invoke("Spawn", 1f);
     }
 
     // Update is called once per frame
@@ -63,14 +63,14 @@ public class RoomSpawner : MonoBehaviour
             {
 
 
-                Instantiate(tempelates.rlcoridor, transform.position, tempelates.topRooms[rand].transform.rotation);
+                Instantiate(tempelates.tbcoridor, transform.position,Quaternion.identity);
             }
 
             else if (openingDirection == 3 || openingDirection == 4)
             {
 
 
-                Instantiate(tempelates.tbcoridor, transform.position, tempelates.bottomRooms[rand].transform.rotation);
+                Instantiate(tempelates.rlcoridor, transform.position,Quaternion.identity);
             }
         }
 
@@ -82,6 +82,8 @@ public class RoomSpawner : MonoBehaviour
     {
         if(collision.CompareTag("SpawnPoint"))
         {
+            print(openingDirection);
+            print(collision.GetComponent<RoomSpawner>().openingDirection);
             if(collision.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
                 if(openingDirection == 3 && collision.GetComponent<RoomSpawner>().openingDirection == 1)
