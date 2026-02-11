@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject enemyPrefab;
+    public EnemyData[] enemyTypes;
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnEnemy(Vector2 pos)
     {
-        
+        var enemy = Instantiate(enemyPrefab, pos, Quaternion.identity);
+        enemy.GetComponent<EnemyController>().data =
+            enemyTypes[Random.Range(0, enemyTypes.Length)];
     }
 }
+

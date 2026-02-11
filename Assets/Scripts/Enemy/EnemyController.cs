@@ -5,8 +5,10 @@ using System.Collections;
 public class EnemyController : MonoBehaviour
 {
     public EnemyData data;
-    private Rigidbody2D rb;
-    private Transform player;
+
+    public Rigidbody2D rb;
+    public Transform player; // manegerdan alÄ±nacak
+
     private int currentHealth;
     private bool isKnocked;
 
@@ -17,34 +19,49 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        currentHealth = data.maxHealth;
+        player = GameObject.FindGameObjectWithTag("Player").transform; //manegerdan alacak
 
-        //ApplyVisuals();   //sprite kýsmý için
+        currentHealth = data.maxHealth;
     }
 
     void FixedUpdate()
     {
-        if (player == null || isKnocked) return;
+        if (player == null) return;
 
+        if (!isKnocked)
+        {
+            Move();
+        }
+    }
+
+    void Move()
+    {
         Vector2 dir = (player.position - transform.position).normalized;
         rb.velocity = dir * data.moveSpeed;
     }
 
-    void ApplyVisuals()
+    public void TakeHeal(int Heal)
     {
-        var sr = GetComponent<SpriteRenderer>();
-        if (sr != null)
+        if (Heal < 0) return;
+
+        currentHealth += Heal;
+
+        if (currentHealth >= data.maxHealth)
         {
-            sr.sprite = data.sprite;
-            sr.color = data.color;
+            currentHealth = data.maxHealth;
         }
+
+        //update heal ui
+            
     }
+
 
     public void TakeDamage(int dmg, Vector2 hitSource)
     {
         currentHealth -= dmg;
         ApplyKnockback(hitSource);
+
+        //update healt ui
 
         if (currentHealth <= 0)
             Die();
@@ -54,6 +71,7 @@ public class EnemyController : MonoBehaviour
     {
         if (data.knockbackResistance >= 1f) return;
 
+        StopAllCoroutines();
         StartCoroutine(KnockbackRoutine(source));
     }
 
@@ -64,7 +82,7 @@ public class EnemyController : MonoBehaviour
         Vector2 dir = (rb.position - source).normalized;
         rb.velocity = dir * data.knockbackForce * (1f - data.knockbackResistance);
 
-        yield return new WaitForSeconds(0.12f);
+        yield return new WaitForSeconds(0.15f);
 
         isKnocked = false;
     }

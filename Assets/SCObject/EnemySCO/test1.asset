@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39628722da7d378419f1a7e15c73f8d3, type: 3}
   m_Name: test1
   m_EditorClassIdentifier: 
-  enemyName: 
+  enemyName: numan
   maxHealth: 10
   moveSpeed: 2
   damage: 1
   knockbackForce: 5
-  knockbackResistance: 0
+  knockbackResistance: 1
   sprite: {fileID: 0}
   color: {r: 1, g: 1, b: 1, a: 1}
