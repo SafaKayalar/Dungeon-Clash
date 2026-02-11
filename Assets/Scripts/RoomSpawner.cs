@@ -15,11 +15,10 @@ public class RoomSpawner : MonoBehaviour
     private int rand;
     private bool spawned = false;
     public string roomtype;
-
     void Start()
     {
         tempelates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTempelates>();
-        Invoke("Spawn", 0.1f);
+        Invoke("Spawn", 1f);
     }
 
     // Update is called once per frame
@@ -86,19 +85,19 @@ public class RoomSpawner : MonoBehaviour
             {
                 if(openingDirection == 3 && collision.GetComponent<RoomSpawner>().openingDirection == 1)
                 {
-                    Instantiate(tempelates.rt, transform.position, Quaternion.Euler(0, 0, 270));
+                    Instantiate(tempelates.rt, transform.position, Quaternion.identity);
                 }
                 else if (openingDirection == 3 && collision.GetComponent<RoomSpawner>().openingDirection == 2)
                 {
-                    Instantiate(tempelates.rb, transform.position, Quaternion.Euler(0, 0, 180));
+                    Instantiate(tempelates.rb, transform.position, Quaternion.identity);
                 }
                 else if (openingDirection == 4 && collision.GetComponent<RoomSpawner>().openingDirection == 1)
                 {   
-                    Instantiate(tempelates.lt, transform.position, Quaternion.Euler(0, 0, 0));            
+                    Instantiate(tempelates.lt, transform.position, Quaternion.identity);            
                 }
                 else if (openingDirection ==  4 && collision.GetComponent<RoomSpawner>().openingDirection == 2)
                 {
-                    Instantiate(tempelates.lb, transform.position, tempelates.leftRooms[rand].transform.rotation);
+                    Instantiate(tempelates.lb, transform.position, Quaternion.identity);
                 }
                 Destroy(gameObject);
             }
