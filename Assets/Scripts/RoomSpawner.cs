@@ -18,7 +18,7 @@ public class RoomSpawner : MonoBehaviour
     void Start()
     {
         tempelates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTempelates>();
-        Invoke("Spawn", 1f);
+        Invoke("Spawn", 0.1f);
     }
 
     // Update is called once per frame

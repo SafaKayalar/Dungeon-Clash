@@ -17,4 +17,8 @@ public class RoomTempelates : MonoBehaviour
     public GameObject lt;
 
 
+
+    [Header("Rooms")]
+    public List<GameObject> rooms;
+
 }
